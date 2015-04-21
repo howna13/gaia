@@ -1,6 +1,8 @@
 <?php
 include 'core/init.php';
-//logged_in_redirect();
+include 'includes/overall/header.php';
+
+logged_in_redirect();
 
 if(empty($_POST) === false){
 	$username = $_POST['username'];
@@ -18,25 +20,23 @@ if(empty($_POST) === false){
 				$errors[] = 'Password too long';
 		}
 		
-		$jodeeer = login($username, $password);
-		if ($jodeeer == 1){
-			echo "SEguim amb les mateixs, es un puto 1";
-		} else {
-			echo "Ves pero on, ara ja no es un 1, hay que jopder-se!";
-		}
+		$user_id = login();
+
 		//echo $username . " " . $password . " " . $user_id;
 		if($user_id === false){
 			$errors[] = 'Combinació usuari/contrassenya incorrecta';
 		} else{
-			$_SESSION['user_id'] = $login;
-			header('Location: '.$_SERVER['PHP_SELF']);
+			echo "MY USER ID ".$user_id; 
+			$_SESSION['user_id'] = $user_id;
+			echo "<br>MY SESSION " .$_SESSION['user_id'];
+			header('Location: index.php');
 			exit();
 		}
 	}
 } else {
 	$errors[] = 'No data received';
 }
-include 'includes/overall/header.php';
+
 if (empty($errors) === false) {
 ?>
 	<h3>T'hem intentat connectar però...</h3>

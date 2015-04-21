@@ -1,5 +1,4 @@
-/<!-- <form action="login.php" method="post"> -->
-<form action="" method="post">
+<form action="login.php" method="post">
 	<div id="m_login">
 		<li id="text">
 			Usuari
@@ -8,7 +7,7 @@
 			<input type="text" style="width:100px;" name="username">
 		</li>
 		<li id="text">
-			Constrasenya
+			Constrasenya 
 		</li>
 		<li id="casella">
 			<input type="password" style="width:100px;" name="password">

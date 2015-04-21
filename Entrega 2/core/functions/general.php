@@ -20,25 +20,31 @@ function protect_page(){
 
 function array_sanitize(&$item) {
 	//XXAMP
-	//$item = mysql_real_escape_string($item);
+	$item = mysql_real_escape_string($item);
 	//HOSTINGER
-	$item = mysql_real_escape_string(connect_db,$item);
+	//$item = mysql_real_escape_string(connect_db,$item);
 }
 
 function sanitize($data) {
 	//XXAMP
-	//return mysql_real_escape_string($data);
+	return mysql_real_escape_string($data);
 	
 	//HOSTINGER
-	echo "Im i getting it sanitzed?   ".$data."   hmmmm";
-	$con = connect_db();
-	$data = mysqli_real_escape_string($con, $data);
-	echo "GEEEetting it sanitzed?   ".$data."   hmmmm";
-	disconnect_db();
-	return $data;
+	//$con = connect_db();
+	//$data = mysqli_real_escape_string($con, $data);
+	//disconnect_db();
+	//return $data;
 }
 
 function output_errors($errors){
 	return '<ul><li>' . implode('</li><li>', $errors) . '</ul><br>';
+}
+
+function possibleFalseToString($false){
+	($false===false)?'false':$false;
+}
+
+function booleanToString($boolean){
+	return($boolean === true)?'true':'false';
 }
 ?>
