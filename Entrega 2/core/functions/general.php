@@ -1,4 +1,13 @@
 <?php
+
+function sql($query){
+	echo "<br>SQL: <br>".$query."<br>";
+}
+
+function sql_arg($query,$text){
+	echo "<br>SQL ".$text.": <br>".$query."<br>";
+}
+
 function loggout_redirect(){
 	session_start();
 	header('Location: '.$_SERVER['PHP_SELF']);

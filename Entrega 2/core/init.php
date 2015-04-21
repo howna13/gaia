@@ -4,6 +4,7 @@ error_reporting(0);
 require 'database/connect.php';
 require 'functions/general.php';
 require 'functions/users.php';
+require 'functions/reservar.php';
 
 //connect_db();
 if (logged_in() === true){
