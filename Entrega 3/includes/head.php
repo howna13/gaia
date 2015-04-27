@@ -8,4 +8,16 @@
 	<meta name="Url" content="http://www.refugigaia.besaba.com" />
     
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
+	<script>
+
+		function hideElement(){
+			$('taula_reserves').hide();
+		}
+		
+		function showElement(){
+			$('taula_reserves').show();
+		}
+
+	</script>
 </head>

@@ -9,16 +9,22 @@ include 'includes/overall/header.php';
 <?php
 $username = $user_data['username'];
 $num_reserves = num_reserves($username);
-
- if ($num_reserves === 0){
+ if ($num_reserves == 0){
  	header('Location: nova_reserva.php');
  	exit();
  } else {
+   
+   ?>
+   
+   <br />
+   <input type="button" value="Amagar" onclick="hideElement();"/>
+   <input type="button" value="Mostrar" onclick="showElement();"/>
+ 
+	<?php
  	$sql = get_reserves($username);
  	$result = mysql_query($sql);
  	$fields_num = mysql_num_fields($result);
-
-	echo "<table><tr>
+	echo "<table id=\"taula_reserves\"><tr>
  		    <th>Dia</th>
  		    <th>Persones</th>		
  		    <th>Habitació</th>

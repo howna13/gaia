@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 27-04-2015 a les 12:48:26
+-- Generation Time: 27-04-2015 a les 13:38:58
 -- Versió del servidor: 5.6.16
 -- PHP Version: 5.5.11
 
@@ -56,7 +56,7 @@ CREATE TABLE IF NOT EXISTS `reserves` (
   `username` varchar(25) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `dia` varchar(10) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   PRIMARY KEY (`n_reserva`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
 -- Bolcant dades de la taula `reserves`
@@ -65,7 +65,9 @@ CREATE TABLE IF NOT EXISTS `reserves` (
 INSERT INTO `reserves` (`n_reserva`, `habitacio`, `n_persones`, `username`, `dia`) VALUES
 (4, 'canigo', 5, 'howna13', '12-12-2015'),
 (5, 'peguera', 7, 'howna13', '12-12-2015'),
-(6, 'pedraforca', 9, 'howna13', '12-12-2015');
+(6, 'pedraforca', 9, 'howna13', '12-12-2015'),
+(7, 'peguera', 13, 'howna13', '12-12-2015'),
+(8, 'pedraforca', 13, 'howna13', '12-12-2015');
 
 -- --------------------------------------------------------
 
@@ -86,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `usuaris` (
   `active` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=6 ;
 
 --
 -- Bolcant dades de la taula `usuaris`
@@ -96,7 +98,8 @@ INSERT INTO `usuaris` (`user_id`, `username`, `password`, `nom`, `cognoms`, `ema
 (1, 'alex', '5f4dcc3b5aa765d61d8327deb882cf99', 'Alexandre', 'Martinez Sistach', 'alex@gmail.com', '2014-05-13', '2015-04-08 12:20:40', '2015-04-08 16:16:15', 1),
 (2, 'howna13', 'e404b253da46751a429ac447b2e893f3', 'Bru', 'Mas Ribera', 'howna13@gmail.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 1),
 (3, 'merce', 'd8b5b939757e2e6c9ac90622b0b60331', 'MercÃ¨', 'Ribera BergÃ³s', 'merceriberab@gmail.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 1),
-(4, 'sdasad', '5f4dcc3b5aa765d61d8327deb882cf99', 'dfsasa', '', 'dfsad@sadas.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 0);
+(4, 'sdasad', '5f4dcc3b5aa765d61d8327deb882cf99', 'dfsasa', '', 'dfsad@sadas.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 0),
+(5, 'walt', '05a9b20877619367cf37f6ad8f422a45', 'Wally', 'Buscant-la PeraquÃ­', 'walty@soclaputacrack.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 0);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
