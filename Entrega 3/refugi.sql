@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
+-- version 4.1.12
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 24-04-2015 a les 22:33:31
--- Versió del servidor: 5.6.21
--- PHP Version: 5.6.3
+-- Generation Time: 27-04-2015 a les 12:48:26
+-- Versió del servidor: 5.6.16
+-- PHP Version: 5.5.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -27,11 +27,12 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `habitacions` (
-`hab_id` int(3) NOT NULL,
+  `hab_id` int(3) NOT NULL AUTO_INCREMENT,
   `nom` varchar(25) NOT NULL,
   `places` int(11) NOT NULL,
-  `preu` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+  `preu` int(11) NOT NULL,
+  PRIMARY KEY (`hab_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Bolcant dades de la taula `habitacions`
@@ -49,19 +50,22 @@ INSERT INTO `habitacions` (`hab_id`, `nom`, `places`, `preu`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `reserves` (
-`n_reserva` int(6) NOT NULL,
-  `habitacio` varchar(25) NOT NULL,
+  `n_reserva` int(6) NOT NULL AUTO_INCREMENT,
+  `habitacio` varchar(25) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
   `n_persones` int(2) NOT NULL,
-  `username` varchar(25) NOT NULL,
-  `dia` varchar(10) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `username` varchar(25) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `dia` varchar(10) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  PRIMARY KEY (`n_reserva`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Bolcant dades de la taula `reserves`
 --
 
 INSERT INTO `reserves` (`n_reserva`, `habitacio`, `n_persones`, `username`, `dia`) VALUES
-(1, 'canigo', 5, 'howna13', '25/06/2015');
+(4, 'canigo', 5, 'howna13', '12-12-2015'),
+(5, 'peguera', 7, 'howna13', '12-12-2015'),
+(6, 'pedraforca', 9, 'howna13', '12-12-2015');
 
 -- --------------------------------------------------------
 
@@ -70,7 +74,7 @@ INSERT INTO `reserves` (`n_reserva`, `habitacio`, `n_persones`, `username`, `dia
 --
 
 CREATE TABLE IF NOT EXISTS `usuaris` (
-`user_id` int(8) NOT NULL,
+  `user_id` int(8) NOT NULL AUTO_INCREMENT,
   `username` varchar(25) COLLATE latin1_general_ci NOT NULL,
   `password` varchar(32) COLLATE latin1_general_ci NOT NULL,
   `nom` varchar(25) COLLATE latin1_general_ci NOT NULL,
@@ -79,8 +83,10 @@ CREATE TABLE IF NOT EXISTS `usuaris` (
   `data_naixement` date NOT NULL,
   `user_date` datetime NOT NULL,
   `last_login` datetime DEFAULT NULL,
-  `active` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`user_id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci AUTO_INCREMENT=5 ;
 
 --
 -- Bolcant dades de la taula `usuaris`
@@ -92,47 +98,6 @@ INSERT INTO `usuaris` (`user_id`, `username`, `password`, `nom`, `cognoms`, `ema
 (3, 'merce', 'd8b5b939757e2e6c9ac90622b0b60331', 'MercÃ¨', 'Ribera BergÃ³s', 'merceriberab@gmail.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 1),
 (4, 'sdasad', '5f4dcc3b5aa765d61d8327deb882cf99', 'dfsasa', '', 'dfsad@sadas.com', '0000-00-00', '0000-00-00 00:00:00', NULL, 0);
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `habitacions`
---
-ALTER TABLE `habitacions`
- ADD PRIMARY KEY (`hab_id`);
-
---
--- Indexes for table `reserves`
---
-ALTER TABLE `reserves`
- ADD PRIMARY KEY (`n_reserva`);
-
---
--- Indexes for table `usuaris`
---
-ALTER TABLE `usuaris`
- ADD PRIMARY KEY (`user_id`), ADD UNIQUE KEY `username` (`username`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `habitacions`
---
-ALTER TABLE `habitacions`
-MODIFY `hab_id` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `reserves`
---
-ALTER TABLE `reserves`
-MODIFY `n_reserva` int(6) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `usuaris`
---
-ALTER TABLE `usuaris`
-MODIFY `user_id` int(8) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
