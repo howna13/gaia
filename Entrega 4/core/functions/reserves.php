@@ -18,22 +18,16 @@ function get_reserves($username){
 			INNER JOIN reserves
 			ON usuaris.username=reserves.username 
 			WHERE usuaris.username = '$username'";
-	
-// 
-// $taula[] = "<table><tr>
-// 		    <th>Dia</th>
-// 		    <th>Persones</th>		
-// 		    <th>Habitació</th>
-// 		  </tr>";
-// for ($i=0; $i < $num_reserves; $i++){
-// 	$reserves = mysql_fetch_row(mysql_query($sql), $i);
-// 	$taula[] = "<tr>
-// 			<td>".$reserves['dia']."</td>
-// 			<td>".$reserves['n_persones']."</td>		
-// 			<td>".$reserves['habitacio']."</td>
-// 			</tr>";
-// }
-// $taula[] = "</table>";
+return $sql;
+}
+
+function get_reserves_hab($username,$habitacio){
+	$num_reserves = num_reserves($username);
+	$sql ="SELECT reserves.dia, reserves.n_persones,reserves.habitacio 
+			FROM usuaris
+			INNER JOIN reserves
+			ON usuaris.username=reserves.username 
+			WHERE usuaris.username = '$username' AND reserves.habitacio = '$habitacio'";
 return $sql;
 }
 

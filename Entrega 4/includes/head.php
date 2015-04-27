@@ -21,7 +21,29 @@
 						document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
 					}
 				}
-				xmlhttp.open("GET", "gethint.php?q=" + str, true);
+				xmlhttp.open("GET", "gethint.php?habitacio=" + str, true);
+				xmlhttp.send();
+			}
+		}
+		
+		function showHabitacio(str) {
+			if (str == "") {
+				document.getElementById("txtHint2").innerHTML = "";
+				return;
+			} else { 
+				if (window.XMLHttpRequest) {
+					// code for IE7+, Firefox, Chrome, Opera, Safari
+					xmlhttp = new XMLHttpRequest();
+				} else {
+					// code for IE6, IE5
+					xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+				}
+				xmlhttp.onreadystatechange = function() {
+					if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+						document.getElementById("txtHint2").innerHTML = xmlhttp.responseText;
+					}
+				}
+				xmlhttp.open("GET","getreserva.php?habitacio="+str,true);
 				xmlhttp.send();
 			}
 		}
@@ -36,6 +58,28 @@
 		
 		function showElement(){
 			$('taula_reserves').show();
+		}
+		
+		function SubmitRequest()
+		{
+			new Ajax.Request('/ajax.cgi', {
+			method: 'get',
+			onSuccess: successFunc,
+			onFailure:  failureFunc
+			});
+		}
+
+		function successFunc(response){
+			 if (200 == response.status){
+				alert("Call is success");
+			}
+			var container = $('notice');
+			var content = response.responseText;
+			container.update(content);
+		}
+
+		function failureFunc(response){
+			 alert("Call is failed" );	
 		}
 
 	</script>

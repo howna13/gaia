@@ -6,14 +6,14 @@ $a[] = "Peguera";
 
 
 // get the q parameter from URL
-$q = $_REQUEST["q"];
+$habitacio = $_REQUEST["habitacio"];
 
 $hint = "";
 
 // lookup all hints from array if $q is different from "" 
-if ($q !== "") {
-    $q = strtolower($q);
-    $len=strlen($q);
+if ($habitacio !== "") {
+    $q = strtolower($habitacio);
+    $len=strlen($habitacio);
     foreach($a as $name) {
         if (stristr($q, substr($name, 0, $len))) {
             if ($hint === "") {

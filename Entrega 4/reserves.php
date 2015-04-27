@@ -15,44 +15,30 @@ $num_reserves = num_reserves($username);
  } else {
    ?>
    
-    <p><b>Comença escribint el nom de l'habitació</b></p>
+    <p><b>Comença escribint el nom de l'habitació</b></p><br>
 	<form> 
 		Habitació <input type="text" onkeyup="showHint(this.value)">
 	</form>
 	<p>Suggerències: <span id="txtHint"></span></p>
-   
-   <br />
-   <input type="button" value="Amagar" onclick="hideElement();"/>
-   <input type="button" value="Mostrar" onclick="showElement();"/>
+ 
+	<br>
+	<form>
+<select name="habitacions" onchange="showHabitacio(this.value)">
+  <option value="">Selecciona una habitació:</option>
+  <option value="pedraforca">Pedraforca</option>
+  <option value="canigo">Canigó</option>
+  <option value="peguera">Peguera</option>
+  <option value="totes">Totes</option>
+  </select>
+</form>
+<br>
+<span id="txtHint2"></span></p>
  
 	<?php
- 	$sql = get_reserves($username);
- 	$result = mysql_query($sql);
- 	$fields_num = mysql_num_fields($result);
-	echo "<table id=\"taula_reserves\"><tr>
- 		    <th>Dia</th>
- 		    <th>Persones</th>		
- 		    <th>Habitació</th>
- 		  </tr>";
-
-	 //imprimim les files de la taula 
-	 while($row = mysql_fetch_row($result))
-	 {
-	     echo  "<tr>";
-
-	     foreach($row as $cell)
-	         echo "<td>$cell</td>";
-
-	     echo "</tr>\n";
-	 }
-
-	 echo "</table>";
-
-	 mysql_free_result($result);
+ 	
  }
 ?>
 </p>
-
 
 
 <form action="nova_reserva.php" method="post" style="">
