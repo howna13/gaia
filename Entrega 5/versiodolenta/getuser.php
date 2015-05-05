@@ -9,13 +9,9 @@ protect_page();
 <body>
 
 <?php
-	$habitacio = $_GET['habitacio'];
+	$q = $_GET['q'];
 	$username = $user_data['username'];
-	if ($habitacio == 'totes'){
-		$sql = get_reserves($username);
-	}else {
-		$sql = get_reserves_hab($username,$habitacio);
-	}
+	$sql = get_reserves_hab($username,$q);
 	$result = mysql_query($sql);
 	$fields_num = mysql_num_fields($result);
 	echo "<table id=\"taula_reserves\"><tr>
@@ -30,7 +26,7 @@ protect_page();
 		 echo  "<tr>";
 
 		 foreach($row as $cell)
-			 echo "<td align=\"center\">$cell</td>";
+			 echo "<td>$cell</td>";
 
 		 echo "</tr>\n";
 	 }

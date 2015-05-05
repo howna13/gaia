@@ -9,6 +9,17 @@
     
 	<link rel="stylesheet" type="text/css" href="style.css">
 	
+	<!--jQuery-->
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("button").click(function(){
+        $("#txtHint2").hide();
+    });
+});
+</script>
+	
+	<!--Ajax-->
 	<script>
 		function showHint(str) {
 			if (str.length == 0) { 
@@ -49,6 +60,7 @@
 		}
 	</script>
 	
+	<!--Prototype
 	<script src="http://ajax.googleapis.com/ajax/libs/prototype/1.7.2.0/prototype.js"></script>
 	<script>
 
@@ -81,7 +93,11 @@
 		function failureFunc(response){
 			 alert("Call is failed" );	
 		}
+	</script>-->
 
-	</script>
+	
+	
+	
+	
 	
 </head>

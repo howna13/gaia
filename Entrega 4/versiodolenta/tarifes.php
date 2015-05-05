@@ -44,6 +44,14 @@ include 'includes/overall/header.php';?>
 	</tr>
 </table>
 
+<p>Click submit button see how current notice changes.</p>
+  <br />
+ 
+  <div id="notice">Current Notice</div>
+  <br />
+  <br />
+  <input type="button" value="Submit" onclick="SubmitRequest();"/>
+
 <?php if (logged_in() === false){ ?>
 <p><br>Recorda que per fer reserves has d'estar <a class="link" href="register.php">registrat</a></p>
 <?php } ?>
