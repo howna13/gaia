@@ -1,0 +1,36 @@
+<html>
+<head>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+	
+		$("#button").click(function(){
+			var sendu = $("#username").val();
+			var sendp = $("#password").val();
+			
+			$.ajax({
+				type: "POST",
+				url: "ajax.php",
+				data: "username="+sendu+"&password="+sendp,
+				dataType: "json",
+				success: function(msg,string,jqHXR) {
+					$("#result").html(msg+string+jqHXR);
+					alert(msg.password);
+				}
+			});
+			
+		});
+	});
+
+
+</script>
+</head>
+
+<body>
+Name:<input type="text" id="username" name="username"/><br/>
+Password:<input type="password" id="password" name="password"/><p>
+<input type="button" id="button" value="submit"/>
+<div id="result"></div>
+</body>
+</html>
